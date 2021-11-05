@@ -1,5 +1,7 @@
 import styled from "styled-components";
 import { mobile } from "../responsive";
+import { useHistory } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const Container = styled.div`
   width: 100vw;
@@ -55,6 +57,11 @@ const Button = styled.button`
 `;
 
 const Register = () => {
+  const user = useSelector((state) => state.user.currentUser);
+  const history = useHistory();
+
+  user && history.push("/");
+
   return (
     <Container>
       <Wrapper>
