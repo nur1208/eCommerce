@@ -1,7 +1,9 @@
 import styled from "styled-components";
 import { mobile } from "../responsive";
 import { useHistory } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { useState } from "react";
+import { authApiCall } from "../redux/apiCalls";
 
 const Container = styled.div`
   width: 100vw;
@@ -59,26 +61,81 @@ const Button = styled.button`
 const Register = () => {
   const user = useSelector((state) => state.user.currentUser);
   const history = useHistory();
-
   user && history.push("/");
+  const [name, setName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+
+  const dispatch = useDispatch(null);
+
+  const inputValues = [
+    { value: name, setValue: setName, placeholder: "name" },
+    {
+      value: lastName,
+      setValue: setLastName,
+      placeholder: "last name",
+    },
+    {
+      value: username,
+      setValue: setUsername,
+      placeholder: "username",
+    },
+    {
+      value: email,
+      setValue: setEmail,
+      placeholder: "email",
+      type: "email",
+    },
+    {
+      value: password,
+      setValue: setPassword,
+      placeholder: "password",
+      type: "password",
+    },
+    {
+      value: confirmPassword,
+      setValue: setConfirmPassword,
+      placeholder: "confirm password",
+      type: "password",
+    },
+  ];
+
+  const handleCreateUser = async (e) => {
+    e.preventDefault();
+    await authApiCall(
+      dispatch,
+      {
+        name,
+        lastName,
+        username,
+        email,
+        password,
+        confirmPassword,
+      },
+      "register"
+    );
+  };
 
   return (
     <Container>
       <Wrapper>
         <Title>CREATE AN ACCOUNT</Title>
         <Form>
-          <Input placeholder="name" />
-          <Input placeholder="last name" />
-          <Input placeholder="username" />
-          <Input placeholder="email" />
-          <Input placeholder="password" />
-          <Input placeholder="confirm password" />
+          {inputValues.map(({ setValue, ...item }) => (
+            <Input
+              {...item}
+              onChange={(e) => setValue(e.target.value)}
+            />
+          ))}
           <Agreement>
             By creating an account, I consent to the processing of
             my personal data in accordance with the{" "}
             <b>PRIVACY POLICY</b>
           </Agreement>
-          <Button>CREATE</Button>
+          <Button onClick={handleCreateUser}>CREATE</Button>
         </Form>
       </Wrapper>
     </Container>
