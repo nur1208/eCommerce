@@ -1,6 +1,8 @@
 import { DeleteOutline } from "@material-ui/icons";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
+import { deleteProduct } from "../../redux/apiCalls";
 import {
   ProductListDelete,
   ProductListEdit,
@@ -94,12 +96,35 @@ const productRows = [
 export const useProductList = () => {
   const [data, setData] = useState(productRows);
 
+  const product = useSelector((state) => state.product);
+  const { products } = product;
+
+  useEffect(() => {
+    const newRow = products.map(
+      ({ title: name, _id: id, img, price, inStock: stock }) => {
+        const status = "active";
+        return {
+          id,
+          name,
+          stock,
+          img: `/${img}`,
+          status,
+          price: `$${price}`,
+        };
+      }
+    );
+    setData(newRow);
+  }, [products]);
+
+  const dispatch = useDispatch(null);
+
   const handleDelete = (id) => {
+    deleteProduct(id, dispatch);
     setData(data.filter((item) => item.id !== id));
   };
 
   const columns = [
-    { field: "id", headerName: "ID", width: 90 },
+    // { field: "id", headerName: "ID", width: 90 },
     {
       field: "product",
       headerName: "Product",
@@ -135,7 +160,7 @@ export const useProductList = () => {
       renderCell: (params) => {
         return (
           <>
-            <Link to={"/admin/products/" + params.row.id}>
+            <Link to={"/admin/product/" + params.row.id}>
               <ProductListEdit id="productListEdit">
                 Edit
               </ProductListEdit>

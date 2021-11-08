@@ -5,11 +5,12 @@ const BASE_URL = "http://localhost:5050/api/v1";
 //   JSON.parse(localStorage.getItem("persist:root")).user
 // ).currentUser.accessToken;
 
+const TOKEN = localStorage.getItem("token");
 export const publicRequest = axios.create({
   baseURL: BASE_URL,
 });
 
 export const userRequest = axios.create({
   baseURL: BASE_URL,
-  //   headers: { token: `Bearer ${TOKEN}` },
+  headers: { token: `Bearer ${TOKEN}` },
 });

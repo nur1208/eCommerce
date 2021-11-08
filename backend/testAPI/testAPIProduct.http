@@ -1,0 +1,21 @@
+@port = 5050
+@Host =  http://localhost
+@route = api/v1/products
+@adminToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxODc3NzdlZWQ1NGY0YmEyOGE0MzNkOCIsImlzQWRtaW4iOnRydWUsImlhdCI6MTYzNjM1OTg4MiwiZXhwIjoxNjM2NjE5MDgyfQ.7XX8tX-JByGTIiciUaoAooEcParlLBDIChuRJhxE62c
+
+@productId = 61877ff25a1c77a3a9975cd3
+GET {{Host}}:{{port}}/{{route}}
+token: Bearer {{adminToken}}
+
+###
+
+GET {{Host}}:{{port}}/{{route}}/find/{{productId}}
+###
+
+PUT {{Host}}:{{port}}/{{route}}/{{productId}}
+token: Bearer {{adminToken}}
+Content-Type: application/json
+
+{
+    "title":"iphone8s"
+}

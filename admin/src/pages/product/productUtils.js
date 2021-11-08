@@ -25,14 +25,7 @@ export const chartProps = {
   title: "Sales Performance",
 };
 
-const productInfoItems = [
-  { key: "id", value: "123" },
-  { key: "sales", value: "5123" },
-  { key: "active", value: "yes" },
-  { key: "in stock", value: "no" },
-];
-
-export const renderProductInfoItem = () => {
+export const renderProductInfoItem = (productInfoItems) => {
   return productInfoItems.map(({ key, value }, index) => (
     <ProductInfoItem id="ProductInfoItem">
       <ProductInfoKey id="ProductInfoKey">{key}:</ProductInfoKey>

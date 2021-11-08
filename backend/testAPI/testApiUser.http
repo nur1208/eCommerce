@@ -1,0 +1,7 @@
+@port = 5050
+@Host =  http://localhost
+@route = api/v1/products
+@adminToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxODc3NzdlZWQ1NGY0YmEyOGE0MzNkOCIsImlzQWRtaW4iOnRydWUsImlhdCI6MTYzNjI3MDg3OCwiZXhwIjoxNjM2NTMwMDc4fQ.cnhuIHE2PMx8mFt-YwIf_NAhyxc8F5CL0YgqsTbUexA
+
+GET {{Host}}:{{port}}/{{route}}
+

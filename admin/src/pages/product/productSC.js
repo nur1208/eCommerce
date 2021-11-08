@@ -87,6 +87,11 @@ export const ProductForm = styled.form`
   justify-content: space-between;
 `;
 
+export const ProductFormLeftWrapper = styled.div`
+  display: flex;
+  gap: 30px;
+`;
+
 export const ProductFormLeft = styled.div`
   display: flex;
   flex-direction: column;

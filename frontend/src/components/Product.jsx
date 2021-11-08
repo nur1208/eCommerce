@@ -23,7 +23,7 @@ const Info = styled.div`
 `;
 
 const Container = styled.div`
-  flex: 1;
+  /* flex: 1; */
   margin: 5px;
   min-width: 280px;
   height: 350px;
@@ -47,6 +47,8 @@ const Circle = styled.div`
 `;
 
 const Image = styled.img`
+  max-width: 200px;
+  max-height: 200px;
   height: 75%;
   z-index: 2;
 `;

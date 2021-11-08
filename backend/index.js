@@ -20,11 +20,12 @@ mongoose
 
 app.use(cors());
 app.use(express.json());
-app.use("/api/v1/auth", authRoute);
-app.use("/api/users", userRoute);
-app.use("/api/products", productRoute);
-app.use("/api/carts", cartRoute);
-app.use("/api/orders", orderRoute);
+const appVersion = "/api/v1";
+app.use(`${appVersion}/auth`, authRoute);
+app.use(`${appVersion}/users`, userRoute);
+app.use(`${appVersion}/products`, productRoute);
+app.use(`${appVersion}/carts`, cartRoute);
+app.use(`${appVersion}/orders`, orderRoute);
 // app.use("/api/checkout", stripeRoute);
 
 app.listen(process.env.PORT || 5050, () => {

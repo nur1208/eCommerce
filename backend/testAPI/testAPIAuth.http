@@ -6,9 +6,10 @@ POST {{Host}}:{{port}}/{{route}}/register
 Content-Type: application/json
 
 {
-    "username":"ben",
-    "email":"ben@ben.com",
-    "password":"12341234"
+    "username":"batis2",
+    "email":"batis22@batis.com",
+    "password":"12341234", 
+    "isAdmin":true
 }
 
 
@@ -17,7 +18,7 @@ POST {{Host}}:{{port}}/{{route}}/login
 Content-Type: application/json
 
 {
-    "username":"ben",
+    "username":"batis2",
     "password":"12341234"
 }
 

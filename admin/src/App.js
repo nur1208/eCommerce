@@ -13,7 +13,7 @@ import { User } from "./pages/user/User";
 import { NewUser } from "./pages/newUser/NewUser";
 import { ProductList } from "./pages/productList/ProductList";
 import { Product } from "./pages/product/Product";
-import { NewProduct } from "./pages/newProduct/NewProduct";
+import NewProduct from "./pages/newProduct/NewProduct";
 import Login from "./pages/login/Login";
 import { useSelector } from "react-redux";
 
@@ -37,25 +37,25 @@ function App() {
             <Topbar />
             <div className="container">
               <Sidebar />
-              <Route exact path="/">
+              <Route exact path="/admin/">
                 <AdminHomePage />
               </Route>
-              <Route path="/users">
+              <Route path="/admin/users">
                 <UserList />
               </Route>
-              <Route path="/user/:userId">
+              <Route path="/admin/user/:userId">
                 <User />
               </Route>
-              <Route path="/newUser">
+              <Route path="/admin/newUser">
                 <NewUser />
               </Route>
-              <Route path="/products">
+              <Route path="/admin/products">
                 <ProductList />
               </Route>
-              <Route path="/product/:productId">
+              <Route path="/admin/product/:productId">
                 <Product />
               </Route>
-              <Route path="/newproduct">
+              <Route path="/admin/newproduct">
                 <NewProduct />
               </Route>
             </div>
