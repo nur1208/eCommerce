@@ -32,7 +32,7 @@ function App() {
         <Route path="/login">
           <Login />
         </Route>
-        {currentUser ? (
+        {currentUser && currentUser.isAdmin ? (
           <>
             <Topbar />
             <div className="container">
